@@ -1,0 +1,78 @@
+//Balloon Buster! Prt1
+//Move your mouse! The Bow and Arrow will Follow!
+
+//Create Sprite Objects
+
+//Backround Sunshine Scene
+var scene = createSprite(400,350,400,400);
+scene.setAnimation("Sunshine");
+scene.scale = 2;
+scene.VelocityX = -2;
+scene.x=scene.width/2;
+
+//BALLOONS
+
+//Red Balloon
+for (var i = 60; i < 400; i=i+90) 
+{
+   var redBalloon = createSprite(50, i, 20, 20);
+  redBalloon.setAnimation("red");
+}
+//Green Balloon
+for (var i = 100; i < 350; i=i+90) 
+{
+   var greenBalloon = createSprite(100, i, 20, 20);
+  greenBalloon.setAnimation("green");
+}
+//Blue Balloon
+for (var i = 140; i < 300; i=i+90) 
+{
+   var blueBalloon = createSprite(150, i, 20, 20);
+  blueBalloon.setAnimation("blue");
+}
+//Yellow Balloon
+var yellowBalloon =  createSprite(200,190,400,400);
+yellowBalloon.setAnimation( "yellow");
+
+// Bow & Arrow
+var bow =  createSprite(350,mouseY,400,400);
+bow.setAnimation( "bow");
+
+
+var arrow =  createSprite(350,mouseY,400,400);
+arrow.setAnimation("arrow");
+
+
+function draw() {
+  
+  // Move Bow and Arrow with The Mouse!
+  bow.y = mouseY;
+  arrow.y = mouseY;
+  
+  if (keyDown("space")){
+    arrow.velocityX=-110;
+  }
+   if (arrow.isTouching(balloon1)){
+    balloon1.destroy();
+    arrow.y=bow.y;
+  }
+  
+  if (arrow.isTouching(balloon2)){
+    balloon2.destroy();
+     arrow.y=bow.y;
+  }  
+  
+  if (arrow.isTouching(balloon3)){
+    balloon3.destroy();
+    arrow.y=bow.y;
+  }   
+  
+  if (arrow.isTouching(balloon4)){
+    balloon4.destroy();
+     arrow.y=bow.y;
+  }
+ 
+  //Display Sprites
+  drawSprites();
+
+}
